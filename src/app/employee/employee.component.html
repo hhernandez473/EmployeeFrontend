@@ -148,13 +148,33 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <button 
+                                            *ngIf="!btnEdit"
                                             mat-raised-button 
                                             class="btn btn-primary ml-4 mr-2" 
                                             type="button" 
-                                           
+                                              
                                             (click)="saveEmployee()"
                                             >
-                                            <mat-icon>add</mat-icon> Add
+                                            <mat-icon>add</mat-icon> Guardar
+                                        </button> 
+                                        <button 
+                                            *ngIf="btnEdit"
+                                            mat-raised-button 
+                                            class="btn btn-primary ml-4 mr-2" 
+                                            color="warn"
+                                            type="button" 
+                                            (click)="editEmployee()"
+                                            >
+                                            <mat-icon>mode_edit</mat-icon> Editar
+                                        </button>
+                                        <button 
+                                            mat-raised-button 
+                                            class="btn btn-secondary ml-4 mr-2" 
+                                            type="button" 
+                                              
+                                            (click)="cleanForm()"
+                                            >
+                                            <mat-icon>clear</mat-icon> Limpiar
                                         </button> 
                                     </div>
                                 </div>
@@ -183,11 +203,28 @@
                                             </ng-container>
                                             <ng-container matColumnDef="total">
                                                 <mat-header-cell *matHeaderCellDef mat-sort-header> Salario Total </mat-header-cell>
-                                                <mat-cell *matCellDef="let element"> {{element.salary}}
+                                                <mat-cell *matCellDef="let element"> {{(element.salary+element.bonus) | number:"1.2-2"}}
                                                 </mat-cell>
                                                
                                             </ng-container>
-                                           
+                                            <ng-container matColumnDef="edit">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>Editar</mat-header-cell>
+                                                <mat-cell *matCellDef="let element"> 
+                                                    <button mat-button color="second" (click)="employeeSelected(element)" >
+                                                        <mat-icon class="mat-24">mode_edit</mat-icon>
+                                                      </button>
+                                                </mat-cell>
+                                               
+                                            </ng-container>
+                                            <ng-container matColumnDef="del">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>Eliminar</mat-header-cell>
+                                                <mat-cell *matCellDef="let element"> 
+                                                    <button mat-button color="warn" (click)="confirmDeleteEmployee(element.id)" >
+                                                        <mat-icon class="mat-24">delete</mat-icon>
+                                                      </button>
+                                                </mat-cell>
+                                               
+                                            </ng-container>
                                             <mat-header-row *matHeaderRowDef="columnsEmployed; sticky: true"></mat-header-row>
                                             <mat-row  *matRowDef="let row; columns: columnsEmployed;"
                                            ></mat-row>
