@@ -1,0 +1,22 @@
+.full-width {
+    width: 100%;
+}
+
+.mat-header-cell,
+.mat-cell {
+    font-size: 12px;
+}
+
+
+
+.mat-row,
+.mat-footer-row {
+    min-height: 35px;
+}
+
+
+.table-container {
+    position: relative;
+    max-height: 500px;
+    overflow: auto;
+}

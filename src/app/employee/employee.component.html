@@ -1,0 +1,207 @@
+<section class="content mt-4">
+    <div class="container-fluid">
+        <div class="row clearfix">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="card  ">
+                    <div class="body mt-2">
+                        <div class="row ">
+                            <div class="col-md-5" [formGroup]="employeeForm">
+                                <div class="row" >
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="fill" class="full-width ml-4">
+                                            <mat-label>Nombre del empleado</mat-label>
+                                            <input matInput type="text" autocomplete="off" formControlName="name" class="ml-4">
+                                            <mat-error *ngIf="checkError('name', 'required')" > Nombre del empleado es requerido</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="fill" class="full-width ml-4">
+                                            <mat-label>Apellidos</mat-label>
+                                            <input matInput type="text" autocomplete="off" formControlName="lastname" class="ml-4">
+                                            <mat-error *ngIf="checkError('lastname', 'required')" > Apellidos del empleado son requeridos</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill" class="full-width ml-4">
+                                            <mat-label>Genero</mat-label>
+                                            <mat-select formControlName="genderId">
+                                                <mat-option *ngFor="let gender of genderList" [value]="gender.id">
+                                                    {{gender.name}}
+                                                </mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="checkError('genderId', 'required')" >Seleccione genero</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill" class="full-width ml-4">
+                                            <mat-label>Estado Civil</mat-label>
+                                            <mat-select formControlName="maritalStatusId">
+                                                <mat-option *ngFor="let status of maritalStatusList" [value]="status.id">
+                                                    {{status.name}}
+                                                </mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="checkError('maritalStatusId', 'required')" >Seleccione estado civil</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill" class="full-width ml-4">
+                                            <mat-label>Edad</mat-label>
+                                            <input matInput type="text" autocomplete="off" formControlName="age" class="ml-4">
+                                            <mat-error *ngIf="checkError('age', 'required')" > Edad es requerida</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row" >
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="fill"  class="ml-4">
+                                            <mat-label>Fecha de Nacimiento</mat-label>
+                                            <input matInput [matDatepicker]='birthdayDate' formControlName='birthdayDate' class="full-width"/>
+                                            <mat-datepicker-toggle matSuffix [for]='birthdayDate'></mat-datepicker-toggle>
+                                            <mat-datepicker #birthdayDate></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="fill" class="full-width ml-4">
+                                            <mat-label>Dpi</mat-label>
+                                            <input matInput type="text" autocomplete="off" formControlName="dpi" class="ml-4">
+                                            <mat-error *ngIf="checkError('dpi', 'required')" > DPI requerido</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                   
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill" class="full-width ml-4">
+                                            <mat-label>NIT</mat-label>
+                                            <input matInput type="text" autocomplete="off" formControlName="nit" class="ml-4">
+                                            
+                                        </mat-form-field>
+                                    </div>
+                                
+                               
+                                
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill" class="full-width ml-4">
+                                            <mat-label>Número de  IGSS</mat-label>
+                                            <input matInput type="text" autocomplete="off" formControlName="socialSecurity" class="ml-4">
+                                            
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill" class="full-width ml-4">
+                                            <mat-label>Número de  IRTRA</mat-label>
+                                            <input matInput type="text" autocomplete="off" formControlName="irtra" class="ml-4">
+                                            
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="fill" class="full-width ml-4">
+                                            <mat-label>Dirección</mat-label>
+                                            <input matInput type="text" autocomplete="off" formControlName="address" class="ml-4">
+                                            <mat-error *ngIf="checkError('address', 'required')" > Dirección es requerida</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                   
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="fill" class="full-width ml-4">
+                                            <mat-label>Número Pasaporte</mat-label>
+                                            <input matInput type="text" autocomplete="off" formControlName="passport" class="ml-4">
+                                            
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="fill" class="full-width ml-4">
+                                            <mat-label>Puesto de Trabajo</mat-label>
+                                            <mat-select formControlName="jobPositonID">
+                                              
+                                              <mat-optgroup *ngFor="let group of jobPositionList" [label]="group.name"
+                                                            [disabled]="group.disabled">
+                                                <mat-option *ngFor="let jobPosition of group.jobPositions" [value]="jobPosition.id">
+                                                  {{jobPosition.namePosition}}
+                                                </mat-option>
+                                              </mat-optgroup>
+                                            </mat-select>
+                                          </mat-form-field>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <mat-form-field appearance="fill" class="full-width ml-4">
+                                            <mat-label>Sueldo base</mat-label>
+                                            <input matInput type="number" autocomplete="off" formControlName="salary" class="ml-4">
+                                            
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <mat-form-field appearance="fill" class="full-width ml-4">
+                                            <mat-label>Bonificación</mat-label>
+                                            <input matInput type="number" autocomplete="off" formControlName="bonus" class="ml-4">
+                                            
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button 
+                                            mat-raised-button 
+                                            class="btn btn-primary ml-4 mr-2" 
+                                            type="button" 
+                                           
+                                            (click)="saveEmployee()"
+                                            >
+                                            <mat-icon>add</mat-icon> Add
+                                        </button> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 ml-4">
+                                <div class="table-responsive mat-elevation-z4">
+                                    <div class="table-container ">
+                                        <mat-table [dataSource]="EmployeeList" matSort>
+                                            <ng-container matColumnDef="name">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+                                                <mat-cell *matCellDef="let element"> {{element.name}}
+                                                </mat-cell>
+                                                
+                                            </ng-container>
+                                            <ng-container matColumnDef="lastname">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header> Apellidos </mat-header-cell>
+                                                <mat-cell *matCellDef="let element"> {{element.lastname}}
+                                                </mat-cell>
+                                               
+                                            </ng-container>
+                                            <ng-container matColumnDef="dpi">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header> DPI </mat-header-cell>
+                                                <mat-cell *matCellDef="let element"> {{element.dpi}}
+                                                </mat-cell>
+                                               
+                                            </ng-container>
+                                            <ng-container matColumnDef="total">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header> Salario Total </mat-header-cell>
+                                                <mat-cell *matCellDef="let element"> {{element.salary}}
+                                                </mat-cell>
+                                               
+                                            </ng-container>
+                                           
+                                            <mat-header-row *matHeaderRowDef="columnsEmployed; sticky: true"></mat-header-row>
+                                            <mat-row  *matRowDef="let row; columns: columnsEmployed;"
+                                           ></mat-row>
+                                            
+                                        </mat-table>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
